@@ -1,3 +1,5 @@
+import os
+
 from django.db import models
 
 # Create your models here.
@@ -17,5 +19,7 @@ class Cars(models.Model):
         verbose_name='цена в долларах США'
     )
     photos = models.ImageField(
-        verbose_name='фото машины'
+        verbose_name='фото машины',
+        upload_to='./static/'
     )
+
