@@ -1,5 +1,5 @@
-from .models import Cars
-from .serializers import CarsSerializer
+from .models import Cars, Photos
+from .serializers import CarsSerializer, PhotosSerializer
 from rest_framework import viewsets
 from .permissions import CustomPermission
 from rest_framework import filters
@@ -15,6 +15,14 @@ class CarsViewSet(viewsets.ModelViewSet):
     permission_classes = (CustomPermission,)
     filter_backends = [filters.OrderingFilter, filters.SearchFilter]
     search_fields = ['brand', 'model']
+
+
+class PhotosViewSet(viewsets.ModelViewSet):
+    queryset = Photos.objects.all()
+    serializer_class = PhotosSerializer
+    permission_classes = (CustomPermission,)
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    search_fields = ['car_id']
 
 
 class CheckAuth(APIView):

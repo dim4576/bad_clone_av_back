@@ -7,22 +7,58 @@ from rest_framework.authtoken.models import Token
 
 # Create your models here.
 class Cars(models.Model):
-    brand = models.CharField(
-        verbose_name='марка',
-        max_length=60
+    sellerUsername = models.TextField(
+        verbose_name='username продавца'
     )
-    model = models.CharField(
-        verbose_name='модель',
-        max_length=60
+    adventType = models.CharField(
+        verbose_name='тип транспорта',
+        max_length=20
+    )
+    priceUSD = models.FloatField(
+        verbose_name='цена в долларах'
+    )
+    description = models.TextField(
+        verbose_name='описание'
+    )
+    sellerName = models.TextField(
+        verbose_name='Имя продавца'
+    )
+    locationName = models.TextField(
+        verbose_name='населённый пункт продажи'
     )
     year = models.IntegerField(
         verbose_name='год выпуска'
     )
-    price = models.IntegerField(
-        verbose_name='цена в долларах США'
+    vin = models.CharField(
+        verbose_name='вин код ТС',
+        max_length=30
     )
-    photos = models.ImageField(
-        verbose_name='фото машины',
+    brand = models.TextField(
+        verbose_name='марка машины'
+    )
+    model = models.TextField(
+        verbose_name='модель машины'
+    )
+    generation = models.TextField(
+        verbose_name='поколение модели'
+    )
+    engine_capacity = models.TextField(
+        verbose_name='объём двигателя'
+    )
+    engine_type = models.TextField(
+        verbose_name='тип двигателя'
+    )
+    transmition_type = models.TextField(
+        verbose_name='тип коробки передач'
+    )
+
+class Photos(models.Model):
+    car_id = models.ForeignKey(
+        Cars,
+        on_delete=models.CASCADE
+    )
+    photo = models.ImageField(
+        verbose_name='сылка на фото',
         upload_to='./static/'
     )
 

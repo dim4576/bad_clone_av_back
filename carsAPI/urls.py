@@ -5,6 +5,7 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register('car', views.CarsViewSet)
+router.register('photos', views.PhotosViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
