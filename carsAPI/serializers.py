@@ -14,6 +14,12 @@ class PhotosSerializer(serializers.ModelSerializer):
 
 class CarsSerializer(serializers.ModelSerializer):
 
+    photos = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field='photo'
+    )
+
     class Meta:
         model = Cars
         fields = (
@@ -32,6 +38,7 @@ class CarsSerializer(serializers.ModelSerializer):
             'engine_capacity',
             'engine_type',
             'transmition_type',
+            'photos'
         )
 
 

@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 
 
 class CarsViewSet(viewsets.ModelViewSet):
-    queryset = Cars.objects.all()
+    queryset = Cars.objects.all()[:30]
     serializer_class = CarsSerializer
     permission_classes = (CustomPermission,)
     filter_backends = [filters.OrderingFilter, filters.SearchFilter]

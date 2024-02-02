@@ -55,12 +55,13 @@ class Cars(models.Model):
 class Photos(models.Model):
     car_id = models.ForeignKey(
         Cars,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='photos'
     )
-    photo = models.ImageField(
+    photo = models.TextField(
         verbose_name='сылка на фото',
-        upload_to='./static/'
     )
+
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
